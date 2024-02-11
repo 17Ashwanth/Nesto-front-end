@@ -1,0 +1,59 @@
+<div style="height: 80vh;" class="d-flex align-items-center">
+  <div class="container">
+      <div style="margin-top: 4rem;" class="row border shadow ">
+          <div  class="col-lg-6">
+              <div class="mt-3 d-flex justify-content-center"></div>
+              <h2 class="text-danger text-center mb-4 mt-2">DELIVERY ADDRESS</h2>
+              <div *ngIf="!ProceedToPaystatus">
+                <form  [formGroup]="checkoutForm">
+                    <div class="form-floating mb-3">
+                        <input name="userName" formControlName="userName"  type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Username</label>
+                      </div>
+                    <div class="form-floating mb-3">
+                        <input name="flat" formControlName="flat" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Apartement/Flat No:</label>
+                      </div>
+                    <div class="form-floating mb-3">
+                        <input name="city" formControlName="city" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Place</label>
+                      </div>
+                    <div class="form-floating mb-3">
+                        <input name="pincode" formControlName="pincode" type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Pincode</label>
+                      </div>
+                </form>
+    
+                  <div class="d-flex justify-content-evenly">
+                    <button (click)="cancel()" class="btn btn-outline-danger mb-3">Cancel</button>
+        <button type="submit" (click)="proceedToPay()" class="btn btn-outline-danger mb-3">Proceed to Pay</button>
+                  </div>
+                  
+            </div>
+            <div *ngIf="ProceedToPaystatus" class="">
+              <div class="border p-3">
+                  <h4 class="text-center mb-3">--Conform The Delivery Address</h4>
+                  <h5 class="text-secondary">Username: {{checkoutForm.value.userName}} <span class="text-center"></span></h5>
+                  <h5 class="text-secondary">Apartement/Flat:  {{checkoutForm.value.flat}} <span class="text-center"></span></h5>
+                  <h5 class="text-secondary">Place:  {{checkoutForm.value.city}} <span class="text-center"></span></h5>
+                  <h5 class="text-secondary">Pincode:  {{checkoutForm.value.pincode}} <span class="text-center"></span></h5>
+                  <h5 class="text-secondary">Total Amount: $ {{GrandTotal}} <span class="text-center"></span></h5>
+              </div>
+              <div *ngIf="!MakePayementStatus" class="d-flex justify-content-evenly">
+                  <button (click)="back()" class="btn btn-outline-danger mt-3">Back</button>
+                  <button (click)="makePayment()"  class="btn btn-outline-danger mt-3">Make the Payment</button>
+                </div>
+                <div class="mt-2" *ngIf="MakePayementStatus" >
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                </div>
+          </div>
+          </div>
+
+          <div class="col-lg-6 p-1 d-flex justify-content-center">
+            <img src="https://www.pngitem.com/pimgs/m/3-37779_transparent-delivery-png-delivery-boy-with-bike-png.png" width="430px" alt="">
+          </div>
+         
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>

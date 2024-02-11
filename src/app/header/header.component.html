@@ -1,0 +1,15 @@
+<nav class="navbar bg-danger">
+    <div class="container-fluid">
+      <h1><a style="color: white;" class="navbar-brand"><i style="color: white;" class="fa-solid fa-shop ms-3"></i> Nesto-Mart</a></h1>
+      <form class="d-flex" role="search">
+        <input style="width: 250px;" class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+      </form>
+      <button routerLink="/wishlist" class="btn btn-outline-light"><i style="color: black;" class="fa-solid fa-heart"></i><a class="navbar-brand"> Wishlist: {{wishlistCount}} </a></button>
+      <button routerLink="/cart"  class="btn btn-outline-light"><i style="color: black;" class="fa-solid fa-cart-shopping"></i><a class="navbar-brand"> Cart: {{cartCount}} </a></button>
+      <button type="submit" *ngIf="!loginUserName" class="btn btn-outline-light"><i style="color: black;" class="fa-solid fa-user"></i><a href="/user/login" class="navbar-brand"> Login </a></button>
+
+      <button type="submit" *ngIf="loginUserName" (click)="logout()"class="btn btn-outline-light"><i style="color: black;" class="fa-solid fa-power-off"></i><a href="" class="navbar-brand"> {{loginUserName}} </a></button>
+      
+      
+    </div>
+  </nav>
