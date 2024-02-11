@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
 
-  server_url='http://localhost:3000'
+  server_url='https://nesto-server.onrender.com'
 
   wishlistCount = new BehaviorSubject(0)
   cartCount = new BehaviorSubject(0)
